@@ -7,8 +7,6 @@
 
 presentation-structure: 
   section-off(intro) 
-  section-off(society-is-fucked)
-  section-off(why-society-is-fucked)
   section-off(list-of-what-they-want-you-to-believe)
   section-off(outro)
   section-off(thank-you)
@@ -56,31 +54,43 @@ section-off(a):
 ;
 
 intro: 
-  "society wants u to believe something...."
+  hello-recursers nl
+  hello-recursers nl
+  we-are-crusaders-of-truth
+  we-will-say-what-everyone-is-afraid-to-say
+  for-example
+  truths
 ;
-society-is-fucked: 
-  "society is fucked."
+
+hello-recursers:
+  ["Hello" | "heyo" | "it's " ["gnarly" | "tubular" | "radical" ] ", "
+  ["my friends" | "buddies" | "recursers" | "cursed batch"] pnct;
+
+we-are-crusaders-of-truth:
+  "We are " [here-to-say | qualified-to-say | rabblerousers ] pnct
 ;
-why-society-is-fucked: 
-  "why society is fucked."
+
+here-to-say:
+  "have traveled great distances"
 ;
+
 list-of-what-they-want-you-to-believe: 
   list-of-what-they-want-you-to-believe 
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
   |
   list-of-what-they-want-you-to-believe 
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
   |
   list-of-what-they-want-you-to-believe 
-  what-they-want-you-to-believe
+  what-they-want-you-to-believe>upcase-first
   |
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
-  what-they-want-you-to-believe
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
+  what-they-want-you-to-believe>upcase-first
 ;
 
 what-they-want-you-to-believe:
@@ -91,11 +101,11 @@ what-they-want-you-to-believe:
    $currInst sp is-actually($nickname "") sp @$nickname>append-is pnct nl
    |
    they-say sp $currInst sp is-actually($nickname "") sp @$nickname>append-isnt nl
-   but sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
+   but>upcase-first sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
    |
    they-say sp $currInst sp is-actually($nickname "not ") sp @$nickname>append-is nl
-   but sp it-is-fucked nl
-  ]
+   but>upcase-first sp it-is-fucked nl
+  ] nl
 ;
 
 
@@ -196,23 +206,6 @@ am-verb-pronoun:
   "is" <-> "it"
   "are" <-> "they"
 ;
-
-
-// inst-pronoun:
-//   "graphind" -> "it"
-//   "hsklcm" -> "it"
-//   "fb" -> "it"
-//   "nyt" -> "it"
-//   "spl" -> "it"
-//   "rc" -> "it"
-//   "rstind" -> "it"
-//   "pipecleaner" -> "it"
-//   "girlscouts" -> "they"
-//   "williamssonoma" -> "it"
-//   "newmedart" -> "they"
-//   "heapproglang" -> "they"
-//   "tinyland" -> "it"
-// ;
 
 outro:
   "we out"
