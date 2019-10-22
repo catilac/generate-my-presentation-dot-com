@@ -5,57 +5,6 @@
 #include <format.pbi>
 #include <stdmap.pbi>
 
-hi: 
-  // assign institution to literal variable
-  ?currInst=institution //"\nassigned currInst\n"
-  ?nickname=$currInst>fullname //"\nassigned name\n"
-  [
-  $currInst sp is-actually($nickname) sp @$nickname>append-is pnct nl
-  |
-  they-say sp $currInst sp is-actually($nickname) sp @$nickname>append-isnt nl
-  but sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
-  // |
-  // they-say institution isnt-actually institution>what-it-isnt
-  // but it-is-fucked
-  ]
-;
-
-they-say:
-  "they say"
-;
-
-but: 
-  "but"
-;
-
-is-actually(item):
-  item>am-verb sp ["actually" | "really" | "truly" | "merely" | 
-         "really just" | "only" | "just"]
-;
-
-is-truly(item):
-  // ?amvertitem>am-verb
-  // am-verb-pronoun
-  item>am-verb>am-verb-pronoun sp item>am-verb sp ["actually" | "really" | "truly" |
-                  "unbelievably" | "incredibly"]
-;
-
-his:
-  // "foo">thing-maps
-  sent-about("fb")
-;
-
-sent-about(sub):
-  sub " is " @sub>append-is
-;
-
-thing-maps:
-  "foo" -> "opts"
-  "foo" -> "opt1"
-;
-
-opts: "opt1" | "opt2" | "bar";
-
 presentation-structure: 
   section-off(intro) 
   section-off(society-is-fucked)
@@ -64,6 +13,29 @@ presentation-structure:
   section-off(outro)
   section-off(thank-you)
   section-off(have-a-blessed-day)
+;
+
+they-say:
+  ["they" | "government officials" | "the facilitators" | "the authorities" | "DMV employees"  ] sp 
+  ["say" | "claim" | "lie" | "assert" | "allege"] sp "that"
+;
+
+but: 
+  "but" | "however" | "when in fact" | "well, actually"
+;
+
+is-actually(item negate):
+  item>am-verb sp negate ["actually" | "really" | "truly" | "merely" | 
+         "really just" | "only" | "just"]
+;
+
+is-truly(item):
+  item>am-verb>am-verb-pronoun sp item>am-verb sp ["actually" | "really" | "truly" |
+                  "unbelievably" | "incredibly"]
+;
+
+sent-about(sub):
+  sub " is " @sub>append-is
 ;
 
 
@@ -112,24 +84,20 @@ list-of-what-they-want-you-to-believe:
 ;
 
 what-they-want-you-to-believe:
-  big-thing " isn't actually all it's cracked up to be." nl
-  |
-  "haskell is fuctional" nl
-  |
-  "swift can be used serverside" nl
-  |
-  "facebook is a privacy nightmare" nl
-  |
-  "american idol was a good show" nl
   // assign institution to literal variable
-  // institution is-actually institution>what-it-is
-  // |
-  // they-say institution>fullname is-actually institution>what-it-isnt
-  // but institution is-actually institution>what-it-is
-  // |
-  // they-say institution isnt-actually institution>what-it-isnt
-  // but it-is-fucked
+  ?currInst=institution //"\nassigned currInst\n"
+  ?nickname=$currInst>fullname //"\nassigned name\n"
+  [
+   $currInst sp is-actually($nickname "") sp @$nickname>append-is pnct nl
+   |
+   they-say sp $currInst sp is-actually($nickname "") sp @$nickname>append-isnt nl
+   but sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
+   |
+   they-say sp $currInst sp is-actually($nickname "not ") sp @$nickname>append-is nl
+   but sp it-is-fucked nl
+  ]
 ;
+
 
 is-actually:
   " is actually " |
@@ -138,7 +106,16 @@ is-actually:
 ;
 
 it-is-fucked: 
-  "they're pulling the " shroud " over your eyes"
+  "they're pulling the " shroud " over your " ["eyes" | "head" | "face" ] |
+
+  "they're serving you a " 
+    ["heaping" | "smoking" | "sizzling" | "steaming" | "massive"] 
+    sp ["pile" | "plate" | "platter" | "all you can eat buffet"] 
+    " of "  
+    ["doo doo" | "garbage"  | "bullsnot" | "bullplop" | "bullboogers" ] |
+
+  "they're " ["poking" | "gouging"] " your " ["eyes" | "retinas" | "peepers"] 
+  " out with a " ["pen plotter" | "sharpie" | "usb-c dongle"] 
 ;
 
 shroud:
@@ -159,7 +136,7 @@ nyt-is: "a paper maché catalog" | "big data visualization" | "the record of pap
 spl-is: "funded by big 🍆" | "an arm of the weather channel" | "NOT cozy" ;
 rc-is: "a community of layabouts" | "clown school" | "a simulation" | "a real treat";
 rstind-is: "owned by Time Square Applebee's" | "William Grisaitis' kitchen" ;
-pipecleaner-is: "an arm of the NSA" | "primarily funding for kindergarten cop" | "pipeDIRTY" ;
+pipecleaner-is: "an arm of the NSA" | "trying to bedazzle unix pipes" | "pipeDIRTY" ;
 girlscouts-is: "on the better business bureau's watchlist" | "bad for the cookie community" ;
 williamssonoma-is: "in cahoots with big wedding registry" | "a fancypants club" | "a knife shoppe" ;
 graphind-is: "an arm of the vertex lobby" | "very edgey" | "invented by the cracking the coding interview pyramid scheme" ;
@@ -168,7 +145,7 @@ heapproglang-is: "turing complete";
 tinyland-is: "pre-recorded" | "sentient" | "an 8k resolution display" ;
 
 // what stuff is NOT
-hsklcm-isnt: "functionally tame"  | "pure" | "MONAD";
+hsklcm-isnt: "functionally tame"  | "pure" | "a MONAD";
 fb-isnt: "a book of lies" | "mark zuckerberg's capstone project" | "a scrapbook" ;
 nyt-isnt: "The Paper of Record" | "A Reputible News Source" | "all the news thats fit to print" ;
 spl-isnt: "a hotel lobby full of " ["furniture upholstered with sweat pant material" | "pillows made of sweats" | "sweatpants"] ;
