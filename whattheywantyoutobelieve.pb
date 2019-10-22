@@ -56,23 +56,70 @@ section-off(a):
 intro: 
   hello-recursers nl
   hello-recursers nl
-  we-are-crusaders-of-truth
-  we-will-say-what-everyone-is-afraid-to-say
-  for-example
-  truths
+  who-we-are nl
+  crusaders-of-truth nl
+  pump-up>upcase-first nl
 ;
-
+//------------intro----------------------------------------------------------
 hello-recursers:
-  ["Hello" | "heyo" | "it's " ["gnarly" | "tubular" | "radical" ] ", "
+  ["Hello" | "heyo" | "it's " ["gnarly" | "tubular" | "radical" ]] ", "
   ["my friends" | "buddies" | "recursers" | "cursed batch"] pnct;
 
-we-are-crusaders-of-truth:
-  "We are " [here-to-say | qualified-to-say | rabblerousers ] pnct
+who-we-are:
+  [[travelers pnct nl qualified-to-say] | 
+  [rabblerousers pnct nl travelers] |
+  [qualified-to-say pnct nl rabblerousers]
+  ] pnct
 ;
 
-here-to-say:
-  "have traveled great distances"
+travelers: 
+  "We have " ["traveled" | "journeyed" | "traversed"] sp
+  ["great" | "long" | "unimagineable"] sp ["distances" | "lengths" | "plains"]
+  " to share our " ["wisdom" | "knowledge" | "good brains"] " with you "
+  ["plebians" | ["lowly" | "simple"] [" programmers" | " code monkeys"]]
 ;
+
+qualified-to-say: 
+  "We have " [["studied under " | "learned from "] ["ascended masters " | "the best in the " ["biz"| "world"]]]
+  sp "like " master ", " master ", " master ", and " master 
+;
+
+master: 
+  "the founder of tik tok" | "Mr and Mrs Pacman" | "the inventor of the slapchop" |
+  "Steve Job's secret child" | "Mai" | "the god of category theory" | 
+  "the information superhighway" | "the ten o'clock news" | "the monad monster"
+;
+
+rabblerousers: 
+  "We have " ["under"|""]"taken "
+  ["great"|"tremendous"|"significant"]sp["professional "|"personal "|""] 
+  "risks to "[["be " | "arrive "] ["at RC" | "here"]] pnct sp
+  "We've had to "   ["abandon" | "leave behind" ] sp "our "
+  ["lives" | ["keyboard clacking" | "thumb-twiddling"] " jobs" | "beanie-babie ecomm businesses" ]
+  "--this is " ["all" | "everything"] " we've ever " ["wanted" | "hoped"] " to do"
+;
+
+crusaders-of-truth:
+  "We'll " ["make you " | "force you to "] "question everything you "
+  ["thought you " ["knew" | "could cram in your "["noggin" | "brain"]]] pnct sp
+  "We're not "   ["afraid"|"scared"|"'fraid"]
+  " to think " ["big " ["concepts" | "ideas"] | ""] pnct sp
+  "This talk will make you " ["question" |"re-think" | "re-examine"] " " big-thing ", " big-thing ", " big-thing ", and " big-thing pnct sp
+;
+
+pump-up:
+  [ "buckle your " ["seatbelt" | "backpack straps" | "knees"]
+    |
+    ["gear" | "strap" | "mount"] " up"
+  ]
+  " for the "
+  [
+    ["ride" | "journey" | "quest" | "adventure" | "powerpoint"]
+    " of your " [ "pathetic " | ""] ["life" | "existence" | "day"]
+  ]
+  pnct
+;
+//---------------------------------------------------------------------------
 
 list-of-what-they-want-you-to-believe: 
   list-of-what-they-want-you-to-believe 
@@ -94,9 +141,8 @@ list-of-what-they-want-you-to-believe:
 ;
 
 what-they-want-you-to-believe:
-  // assign institution to literal variable
-  ?currInst=institution //"\nassigned currInst\n"
-  ?nickname=$currInst>fullname //"\nassigned name\n"
+  ?currInst=institution 
+  ?nickname=$currInst>fullname 
   [
    $currInst sp is-actually($nickname "") sp @$nickname>append-is pnct nl
    |
@@ -220,7 +266,7 @@ have-a-blessed-day:
 
 big-thing: "society" | "class" | "civilisation"
   | "culture" | "language" | "art" | "reality" | "truth" 
-  | "sexuality" | "consciousness" | "humanity" | "personhood"
+  | "consciousness" | "humanity" | "personhood"
   | "individuality" | "history" | "technology" ;
 
 append-is:
