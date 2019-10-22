@@ -9,9 +9,12 @@ while read -r line; do
    arr+=("$line")
 done <<< "$string"
 
+mkdir images
+
 for i in "${arr[@]}"
 do
-	echo $i
+	echo ${!arr[$i]} :  $i
 done
 
 rm dadaout
+rm -r images
