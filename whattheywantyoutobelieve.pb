@@ -9,8 +9,6 @@ presentation-structure:
   section-off(intro) 
   section-off(list-of-what-they-want-you-to-believe)
   section-off(outro)
-  section-off(thank-you)
-  section-off(have-a-blessed-day)
 ;
 
 they-say:
@@ -48,14 +46,13 @@ pnct:
 ;
 
 section-off(a): 
-  "------------------------------------------------\n"
   a
   "\n------------------------------------------------\n\n"
 ;
 
 intro: 
-  hello-recursers nl
-  hello-recursers nl
+  hello-recursers>upcase-first nl
+  hello-recursers>upcase-first nl
   who-we-are nl
   crusaders-of-truth nl
   pump-up>upcase-first nl
@@ -254,14 +251,13 @@ am-verb-pronoun:
 ;
 
 outro:
-  "we out"
-;
-
-thank-you:
-  "thanks booboo"
-;
-have-a-blessed-day:
-  "😄"
+  ["That's " ["a wrap" | "our talk" | "why we came here"] pnct | "That was incredible."] sp
+  ["First of all" | "So, yeah," | "No need to thank us but,"] sp "you're welcome." sp
+  ["We hope that" | "Maybe" | "Perhaps" | "With a lot of hard work on" sp 
+  [ "your end" | "our end" ]] sp "one day we can love you, as much as you love us." sp nl
+  "We " ["pray" | "dream" | "yearn" | "hope"] " that you " ["experience" | "have" | "live"]
+    " a" ["n enchanted" | " blessed" | " magical"] sp ["day" | "life" | "week" | "hour" | "moment"] pnct nl nl
+  [":)" | ""]
 ;
 
 big-thing: "society" | "class" | "civilisation"
