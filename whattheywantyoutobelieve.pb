@@ -5,7 +5,26 @@
 #include <format.pbi>
 #include <stdmap.pbi>
 
-hi:
+hi: 
+  // assign institution to literal variable
+  ?currInst=institution // "\nassigned currInst\n"
+  nickname=$currInst>fullname "\nassigned name\n"
+
+  $currInst sp is-actually sp @$nickname>append-is pnct nl
+  // |
+  // they-say institution>fullname is-actually institution>what-it-isnt
+  // but institution is-actually institution>what-it-is
+  // |
+  // they-say institution isnt-actually institution>what-it-isnt
+  // but it-is-fucked
+;
+
+is-actually:
+  "is " ["actually" | "really" | "truly" | "merely" | 
+         "really just" | "only" | "just"]
+;
+
+his:
   // "foo">thing-maps
   sent-about("fb")
 ;
@@ -115,57 +134,53 @@ institution:
   "the sweatpant lobby" | "the recurse center" | "the restaurant industry"
   | "the pipe cleaner industry" | "the girl scouts" | "williams sonoma" |
   "the graph search industry" | "new media artists" 
-  | "heap-based programming languages" | "tinyland" | "maryanne's kittens"
-;
+  | "heap-based programming languages" | "tinyland" ;
 
 // what stuff REALLY is
 hsklcm-is: "a community of surfers" | "the mafia running the park slope food co-op" | "functionally wild" ;
 fb-is: "a book of lies" | "mark zuckerberg's capstone project" | "a scrapbook" ;
-nyt-is: "paper maché catalog" | "big data visualization" | "the record of paper" ;
-spl-is: "funded by big cold" | "an arm of the weather channel" | "NOT cozy" ;
-rc-is: "a community of layabouts" | "clown school" | "a simulation";
-rstind-is: "entirely owned by Time Square Applebee's" | "William Grisaitis' kitchen" ;
-pipecleaner-is: "an arm of the NSA" | "funded most of kindergarten cop" | "pipeDIRTY" ;
+nyt-is: "a paper maché catalog" | "big data visualization" | "the record of paper" ;
+spl-is: "funded by big 🍆" | "an arm of the weather channel" | "NOT cozy" ;
+rc-is: "a community of layabouts" | "clown school" | "a simulation" | "a real treat";
+rstind-is: "owned by Time Square Applebee's" | "William Grisaitis' kitchen" ;
+pipecleaner-is: "an arm of the NSA" | "primarily funding for kindergarten cop" | "pipeDIRTY" ;
 girlscouts-is: "on the better business bureau's watchlist" | "bad for the cookie community" ;
-williamssonoma-is: "just a kitchen" | "a fancypants club" | "a knife shoppe" ;
-graphind-is: "an arm of the vertex lobby" | "very edgey" | "invented by Mr. Rogers" ;
-newmedart-is: "propped up by LED manufacturers" | "actually a laser cutter" | "a Unity game" ;
+williamssonoma-is: "in cahoots with big wedding registry" | "a fancypants club" | "a knife shoppe" ;
+graphind-is: "an arm of the vertex lobby" | "very edgey" | "invented by the cracking the coding interview pyramid scheme" ;
+newmedart-is: "propped up by LED manufacturers" | "a laser cutter" | "a Unity game" | "photoshop" ;
 heapproglang-is: "turing complete";
-tinyland-is: "pre-recorded" | "sentient" | "8k resolution" ;
-kittens-is: "temp" ;
+tinyland-is: "pre-recorded" | "sentient" | "an 8k resolution display" ;
+
 // what stuff is NOT
-hsklcm-isnt: "functionally tame" ;
+hsklcm-isnt: "functionally tame"  | "pure" | "MONAD";
 fb-isnt: "a book of lies" | "mark zuckerberg's capstone project" | "a scrapbook" ;
-nyt-isnt: "temp" ;
-spl-isnt: "temp" ;
-rc-isnt: "temp" ;
-rstind-isnt: "temp" ;
-pipecleaner-isnt: "temp" ;
-girlscouts-isnt: "temp" ;
-williamssonoma-isnt: "temp" ;
-graphind-isnt: "temp" ;
-newmedart-isnt: "temp" ;
-heapproglang-isnt: "temp" ;
-tinyland-isnt: "temp" ;
-kittens-isnt: "temp" ;
+nyt-isnt: "The Paper of Record" | "A Reputible News Source" | "all the news thats fit to print" ;
+spl-isnt: "a hotel lobby full of " ["furniture upholstered with sweat pant material" | "pillows made of sweats" | "sweatpants"] ;
+rc-isnt: "a place to become a better programmer" | "a programming retreat" | "a community of programmers";
+rstind-isnt: "a pots and pans shoppe" | "owned by Chef Boyardee" | "a chef haven" ;
+pipecleaner-isnt: "for cleaning pipes" | "fun and games" | "arts 'n' crafts" ;
+girlscouts-isnt: "a leadership program" | "wilderness skillz" | "badges" ;
+williamssonoma-isnt: "a fancy cookware shoppe" | "The Command Centre of The Mall" | "a kitchen" ;
+graphind-isnt: "Your professor's after school hobby" | "acyclic" ;
+newmedart-isnt: "the intersection of technology and art" | "your vr headset" | "political VR" ;
+heapproglang-isnt: "a joke" | "a farce" | "a laughing stock" ;
+tinyland-isnt: "a new computing paradigm" | "small gummy bears arranged on a table" | "a tiny dynamic land" ;
 
 
 fullname:
-  // 
-  "hsklcm" -> "the haskell community"
-  "fb" -> "the facebook"
-  "nyt" -> "the new york times"
-  "spl" -> "the sweatpant lobby"
-  "rc" -> "the recurse center"
-  "rstind" -> "the restaurant industry"
-  "pipecleaner" -> "the pipe cleaner industry"
-  "girlscouts" -> "the girl scouts"
-  "williamssonoma" -> "williams sonoma"
-  "graphind" -> "the graph search industry"
-  "newmedart" -> "new media artists"
-  "heapproglang" -> "heap-based programming languages"
-  "tinyland" -> "tinyland"
-  "kittens" -> "maryanne's kittens"
+  "hsklcm" <-> "the haskell community"
+  "fb" <-> "the facebook"
+  "nyt" <-> "the new york times"
+  "spl" <-> "the sweatpant lobby"
+  "rc" <-> "the recurse center"
+  "rstind" <-> "the restaurant industry"
+  "pipecleaner" <-> "the pipe cleaner industry"
+  "girlscouts" <-> "the girl scouts"
+  "williamssonoma" <-> "williams sonoma"
+  "graphind" <-> "the graph search industry"
+  "newmedart" <-> "new media artists"
+  "heapproglang" <-> "heap-based programming languages"
+  "tinyland" <-> "tinyland"
 ;
 
 outro:
@@ -191,3 +206,5 @@ append-is:
 append-isnt:
   ".*" -> "$"/"-is" 
 ;
+
+sp: " " ;
