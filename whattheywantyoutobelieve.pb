@@ -7,21 +7,37 @@
 
 hi: 
   // assign institution to literal variable
-  ?currInst=institution // "\nassigned currInst\n"
-  nickname=$currInst>fullname "\nassigned name\n"
-
-  $currInst sp is-actually sp @$nickname>append-is pnct nl
-  // |
-  // they-say institution>fullname is-actually institution>what-it-isnt
-  // but institution is-actually institution>what-it-is
+  ?currInst=institution //"\nassigned currInst\n"
+  ?nickname=$currInst>fullname //"\nassigned name\n"
+  [
+  $currInst sp is-actually($nickname) sp @$nickname>append-is pnct nl
+  |
+  they-say sp $currInst sp is-actually($nickname) sp @$nickname>append-isnt nl
+  but sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
   // |
   // they-say institution isnt-actually institution>what-it-isnt
   // but it-is-fucked
+  ]
 ;
 
-is-actually:
-  "is " ["actually" | "really" | "truly" | "merely" | 
+they-say:
+  "they say"
+;
+
+but: 
+  "but"
+;
+
+is-actually(item):
+  item>am-verb sp ["actually" | "really" | "truly" | "merely" | 
          "really just" | "only" | "just"]
+;
+
+is-truly(item):
+  // ?amvertitem>am-verb
+  // am-verb-pronoun
+  item>am-verb>am-verb-pronoun sp item>am-verb sp ["actually" | "really" | "truly" |
+                  "unbelievably" | "incredibly"]
 ;
 
 his:
@@ -168,6 +184,7 @@ tinyland-isnt: "a new computing paradigm" | "small gummy bears arranged on a tab
 
 
 fullname:
+  "graphind" <-> "the graph search industry"
   "hsklcm" <-> "the haskell community"
   "fb" <-> "the facebook"
   "nyt" <-> "the new york times"
@@ -177,11 +194,48 @@ fullname:
   "pipecleaner" <-> "the pipe cleaner industry"
   "girlscouts" <-> "the girl scouts"
   "williamssonoma" <-> "williams sonoma"
-  "graphind" <-> "the graph search industry"
   "newmedart" <-> "new media artists"
   "heapproglang" <-> "heap-based programming languages"
   "tinyland" <-> "tinyland"
 ;
+
+am-verb:
+  "graphind" -> "is"
+  "hsklcm" -> "is"
+  "fb" -> "is"
+  "nyt" -> "is"
+  "spl" -> "is"
+  "rc" -> "is"
+  "rstind" -> "is"
+  "pipecleaner" -> "is"
+  "girlscouts" -> "are"
+  "williamssonoma" -> "is"
+  "newmedart" -> "are"
+  "heapproglang" -> "are"
+  "tinyland" -> "is"
+;
+
+am-verb-pronoun:
+  "is" <-> "it"
+  "are" <-> "they"
+;
+
+
+// inst-pronoun:
+//   "graphind" -> "it"
+//   "hsklcm" -> "it"
+//   "fb" -> "it"
+//   "nyt" -> "it"
+//   "spl" -> "it"
+//   "rc" -> "it"
+//   "rstind" -> "it"
+//   "pipecleaner" -> "it"
+//   "girlscouts" -> "they"
+//   "williamssonoma" -> "it"
+//   "newmedart" -> "they"
+//   "heapproglang" -> "they"
+//   "tinyland" -> "it"
+// ;
 
 outro:
   "we out"
@@ -204,7 +258,7 @@ append-is:
 ;
 
 append-isnt:
-  ".*" -> "$"/"-is" 
+  ".*" -> "$"/"-isnt" 
 ;
 
 sp: " " ;
