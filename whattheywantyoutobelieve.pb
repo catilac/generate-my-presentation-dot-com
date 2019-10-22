@@ -141,13 +141,13 @@ what-they-want-you-to-believe:
   ?currInst=institution 
   ?nickname=$currInst>fullname 
   [
-   $currInst sp is-actually($nickname "") sp @$nickname>append-is pnct nl
+   $currInst sp is-actually($nickname "") sp @$nickname>append-is pncti sp
    |
-   they-say sp $currInst sp is-actually($nickname "") sp @$nickname>append-isnt nl
-   but>upcase-first sp currInst sp is-truly($nickname) sp @$nickname>append-is nl
+   they-say sp $currInst sp is-actually($nickname "") sp @$nickname>append-isnt
+   but>upcase-first sp currInst sp is-truly($nickname) sp @$nickname>append-is
    |
-   they-say sp $currInst sp is-actually($nickname "not ") sp @$nickname>append-is nl
-   but>upcase-first sp it-is-fucked nl
+   they-say sp $currInst sp is-actually($nickname "not ") sp @$nickname>append-is
+   but>upcase-first sp it-is-fucked
   ] nl
 ;
 
